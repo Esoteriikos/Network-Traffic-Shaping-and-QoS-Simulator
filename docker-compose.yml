@@ -1,0 +1,16 @@
+version: '3.8'
+
+services:
+  network-simulator:
+    build: .
+    container_name: network_qos_simulator
+    volumes:
+      # Mount results directory to access output files
+      - ./results:/app/results
+      # Mount scripts for easy editing
+      - ./scripts:/app/scripts
+    environment:
+      - DISPLAY=${DISPLAY:-:0}
+    # Keep container running for interactive use
+    stdin_open: true
+    tty: true
